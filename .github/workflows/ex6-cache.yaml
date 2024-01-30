@@ -18,8 +18,10 @@ jobs:
       - name: cache node modules
         uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: ./node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
       - name: run install
         shell: bash
         run: |
@@ -31,16 +33,17 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: get cache of node modules
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
       - name : setup node
         uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
-      - name: get cache of node modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: run test
         shell: bash
         run: |
