@@ -1,0 +1,10 @@
+name: Reusable Workflow user
+
+on:
+  workflow_dispatch:
+
+jobs:
+  caller_1:
+    uses: ./.github/workflows/ex4.yaml
+    with:
+      node-version: 14
