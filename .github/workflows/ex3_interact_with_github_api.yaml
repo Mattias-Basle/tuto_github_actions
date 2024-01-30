@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: create short SHA
         id: short-sha
-        run: echo 'sha_short=${GITHUB_SHA::7}' >> $GITHUB_OUTPUT
+        run: echo "sha_short=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
       - name: create issue
         id: create-issue
         run: |
