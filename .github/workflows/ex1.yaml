@@ -22,7 +22,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: run install
+      - name: run test
         shell: bash
-        run: npm install
+        run: |
+          npm test
 
