@@ -1,0 +1,14 @@
+name: Reusable Workflow user
+
+on:
+  pull_request:
+
+jobs:
+  caller_1:
+    uses: ./.github/workflows/ex4.yaml
+    with:
+      node-version: 14
+  caller_2:
+    uses: Mattias-Basle/another_repo/.github/workflows/another_ex4.yaml@main
+    with:
+      node-version: 14
