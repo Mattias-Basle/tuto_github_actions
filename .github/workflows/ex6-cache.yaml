@@ -31,16 +31,16 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name : setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
       - name: get cache of node modules
         uses: actions/cache@v3
         with:
           path: ~/.npm
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-      - name : setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'lts/*'
       - name: run test
         shell: bash
         run: |
