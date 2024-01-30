@@ -8,3 +8,7 @@ jobs:
     uses: ./.github/workflows/ex4.yaml
     with:
       node-version: 14
+  caller_2:
+    uses: Mattias-Basle/another_repo/.github/workflows/another_ex4.yaml
+    with:
+      node-version: 14
