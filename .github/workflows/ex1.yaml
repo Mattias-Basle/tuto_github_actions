@@ -16,3 +16,19 @@ jobs:
         run: npm install
       - name: check version
         run: npm -v
+
+  failure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup node
+        uses : actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          needs: job1
+      - name: install node
+        run: npm install
+      - name: check version
+        run: npm -v
+
